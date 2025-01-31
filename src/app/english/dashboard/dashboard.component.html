@@ -119,7 +119,7 @@
               <img src="assets/icon/images.jpg" alt="">
             </div>
             <div class="course_title">
-              Chemistry Molecular
+              English Grammer
             </div>
             <div class="optisons">
               <div class="opt">
@@ -135,7 +135,7 @@
                   <mat-icon>assignment</mat-icon>4 assignment
                 </h4>
                 <h4 style="margin-left: 70px;">
-                  <mat-icon>people</mat-icon>200 students
+                  <mat-icon>people</mat-icon> 5 Day Class
                 </h4>
               </div>
             </div>
@@ -197,7 +197,7 @@
 
         <div class="box">
           <div class="progress_bar_area">
-            <circle-progress [percent]="80" [radius]="50" [outerStrokeWidth]="12" [innerStrokeWidth]="5"
+            <circle-progress [percent]="90" [radius]="50" [outerStrokeWidth]="12" [innerStrokeWidth]="5"
               [outerStrokeColor]="'orange'" [innerStrokeColor]="'lightgray'" [animation]="true"
               [animationDuration]="1000">
             </circle-progress>
@@ -250,7 +250,7 @@
           <img src="assets/icon/images.jpg" alt="">
         </div>
         <div class="course_title">
-          Chemistry Molecular
+          English Grammer
         </div>
         <div class="optisons">
           <div class="opt">
@@ -266,7 +266,7 @@
               <mat-icon>assignment</mat-icon>4 assignment
             </h4>
             <h4 style="margin-left: 70px;">
-              <mat-icon>people</mat-icon>200 students
+              <mat-icon>people</mat-icon>6 day class
             </h4>
           </div>
         </div>
@@ -288,7 +288,7 @@
             <h1>Mr. John Doe</h1>
             <p> New York, NY 10001, USA</p>
           </div>
-          <div class="client_details">
+          <!-- <div class="client_details">
             <div class="corse_boxes">
               <h5>
                 <mat-icon>assignment</mat-icon>
@@ -303,7 +303,7 @@
               <h2>04</h2>
               <p>Certifications</p>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="point_area">
@@ -320,30 +320,18 @@
             <button>Collect Points</button>
           </div>
         </div>
-        <div class="summary_box">
-          <div class="img_icon">
-            <img src="assets/icon/images.jpg" alt="">
-            <mat-icon> call_made</mat-icon>
-          </div>
-          <h2>Consultation</h2>
-          <p>Get a mentor to help your learning project</p>
-        </div>
 
-        <div class="summary_box">
-          <div class="img_icon">
-            <img src="assets/icon/images.jpg" alt="">
-            <mat-icon> call_made</mat-icon>
-          </div>
-          <h2>Set Target</h2>
-          <p>Set tearget reminders and your study timeline</p>
-        </div>
       </div>
     </div>
     <div class="chart_section">
-      <div class="chart-container">
-        <canvas baseChart [data]="chartData" [options]="chartOptions" [type]="chartType">
-        </canvas>
+      <!-- <div class="mainline"></div> -->
+
+      <div class="timeline">
+        <div *ngFor="let day of days; let i = index" class="day-container">
+          <div class="number">{{ i + 1 }}</div>
+          <div class="line"></div>
+          <div class="circle" [ngStyle]="{'background': day.gradient}">{{ day.name }}</div>
+        </div>
       </div>
     </div>
   </div>
-</div>

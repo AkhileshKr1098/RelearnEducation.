@@ -13,6 +13,6 @@ export class LoginPageComponent {
 
   }
   onLogin() {
-    this._router.navigate(['english'])
+    this._router.navigate(['/english'])
   }
 }
