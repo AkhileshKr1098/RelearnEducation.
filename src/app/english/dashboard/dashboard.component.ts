@@ -7,7 +7,7 @@ import { LineController, LineElement, PointElement, LinearScale, Title, Category
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  callStatics: any = [12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  callStatics: any = [1, 15, 0, 8, 1, 14, 0, 0, 40, 0, 25, 0]
 
   public chartOptions: ChartOptions = {
     responsive: true,
