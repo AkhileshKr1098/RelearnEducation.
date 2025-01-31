@@ -24,6 +24,8 @@ import { MatListModule } from '@angular/material/list';
 import { WeekByPageComponent } from './week-by-page/week-by-page.component';
 import { NgChartsModule } from 'ng2-charts';
 
+import { NgCircleProgressModule } from 'ng-circle-progress';
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -45,8 +47,17 @@ import { NgChartsModule } from 'ng2-charts';
     MatSelectModule,
     MatListModule,
     MatSidenavModule,
-    NgChartsModule
+    NgChartsModule,
+    NgCircleProgressModule.forRoot({
+      radius: 100,
+      outerStrokeWidth: 15,
+      innerStrokeWidth: 8,
+      outerStrokeColor: "#78C000",
+      innerStrokeColor: "#C7E596",
+      animationDuration: 300,
+    })
     
-  ]
+  ],
+  
 })
 export class EnglishModule { }

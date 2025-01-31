@@ -1,4 +1,150 @@
 <div id="wrapper">
+  <div class="mobile_size_sidebar">
+
+    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExamples"
+      aria-controls="offcanvasExample">
+      <mat-icon>apps</mat-icon>
+      <!-- <mat-icon>menu</mat-icon> -->
+    </button>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExamples" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+
+        <!-- <h5 class="offcanvas-title" id="offcanvasExampleLabel">RELEARN &nbsp;MENU</h5> -->
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body" style="width: 500px; height: auto; overflow: auto;">
+
+        <div id="header_area" class="side_boxes">
+          <h1>
+            <b>Hello,</b> Mr. John Doe
+          </h1>
+          <p>
+            Nice to have you back. what exciting today!<br>
+            Get ready and contribute your lessons today.
+          </p>
+        </div>
+
+        <div id="course" class="side_boxes">
+          <div class="title">Today's Course</div>
+          <div class="course_area">
+
+            <div class="box">
+              <div class="progress_bar_area">
+                <circle-progress [percent]="40" [radius]="50" [outerStrokeWidth]="12" [innerStrokeWidth]="5"
+                  [outerStrokeColor]="'orange'" [innerStrokeColor]="'lightgray'" [animation]="true"
+                  [animationDuration]="1000">
+                </circle-progress>
+                <!-- <img src="assets/icon/progress.png" alt=""> -->
+              </div>
+              <div class="course_title">
+                English Grammer
+              </div>
+              <div class="optisons">
+                <div class="opt">
+                  <h4>
+                    <mat-icon>library_books</mat-icon>20 lessions
+                  </h4>
+                  <h4 style="margin-left: 82px;">
+                    <mat-icon>timer</mat-icon>52 min
+                  </h4>
+                </div>
+                <div class="opt">
+                  <h4>
+                    <mat-icon>assignment</mat-icon>4 assignment
+                  </h4>
+                  <h4 style="margin-left: 70px;">
+                    <mat-icon>people</mat-icon> Class 10 Days
+                  </h4>
+                </div>
+              </div>
+              <div class="buttons_area">
+                <button>Skip</button>
+                <button>Continue</button>
+              </div>
+            </div>
+
+            <div class="box">
+              <div class="progress_bar_area">
+                <circle-progress [percent]="80" [radius]="50" [outerStrokeWidth]="12" [innerStrokeWidth]="5"
+                  [outerStrokeColor]="'orange'" [innerStrokeColor]="'lightgray'" [animation]="true"
+                  [animationDuration]="1000">
+                </circle-progress>
+                <!-- <img src="assets/icon/progress.png" alt=""> -->
+              </div>
+              <div class="course_title">
+                Spoken English
+              </div>
+              <div class="optisons">
+                <div class="opt">
+                  <h4>
+                    <mat-icon>library_books</mat-icon>20 lessions
+                  </h4>
+                  <h4 style="margin-left: 82px;">
+                    <mat-icon>timer</mat-icon>52 min
+                  </h4>
+                </div>
+                <div class="opt">
+                  <h4>
+                    <mat-icon>assignment</mat-icon>4 assignment
+                  </h4>
+                  <h4 style="margin-left: 70px;">
+                    <mat-icon>people</mat-icon>class 10 Day
+                  </h4>
+                </div>
+              </div>
+              <div class="buttons_area">
+                <button>Skip</button>
+                <button>Continue</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div id="class_area" class="side_boxes" style="margin-top: 50px;">
+          <div class="title">Your Class</div>
+          <div class="menu">
+            <ul>
+              <li>All</li>
+              <li>Design</li>
+              <li>Service</li>
+              <li>Coding</li>
+              <li><mat-icon>filter_list</mat-icon></li>
+              <li><mat-icon> local_bar</mat-icon></li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <div class="progress_bar_area">
+              <img src="assets/icon/images.jpg" alt="">
+            </div>
+            <div class="course_title">
+              Chemistry Molecular
+            </div>
+            <div class="optisons">
+              <div class="opt">
+                <h4>
+                  <mat-icon>library_books</mat-icon>20 lessions
+                </h4>
+                <h4 style="margin-left: 82px;">
+                  <mat-icon>timer</mat-icon>52 min
+                </h4>
+              </div>
+              <div class="opt">
+                <h4>
+                  <mat-icon>assignment</mat-icon>4 assignment
+                </h4>
+                <h4 style="margin-left: 70px;">
+                  <mat-icon>people</mat-icon>200 students
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
   <div class="side">
     <div id="header_area" class="side_boxes">
       <h1>
@@ -16,7 +162,11 @@
 
         <div class="box">
           <div class="progress_bar_area">
-            <img src="assets/icon/progress.png" alt="">
+            <circle-progress [percent]="40" [radius]="50" [outerStrokeWidth]="12" [innerStrokeWidth]="5"
+              [outerStrokeColor]="'orange'" [innerStrokeColor]="'lightgray'" [animation]="true"
+              [animationDuration]="1000">
+            </circle-progress>
+            <!-- <img src="assets/icon/progress.png" alt=""> -->
           </div>
           <div class="course_title">
             English Grammer
@@ -47,7 +197,11 @@
 
         <div class="box">
           <div class="progress_bar_area">
-            <img src="assets/icon/progress.png" alt="">
+            <circle-progress [percent]="80" [radius]="50" [outerStrokeWidth]="12" [innerStrokeWidth]="5"
+              [outerStrokeColor]="'orange'" [innerStrokeColor]="'lightgray'" [animation]="true"
+              [animationDuration]="1000">
+            </circle-progress>
+            <!-- <img src="assets/icon/progress.png" alt=""> -->
           </div>
           <div class="course_title">
             Spoken English
@@ -187,11 +341,7 @@
     </div>
     <div class="chart_section">
       <div class="chart-container">
-        <canvas baseChart 
-                [data]="chartData" 
-                
-                [options]="chartOptions"
-                [type]="chartType">
+        <canvas baseChart [data]="chartData" [options]="chartOptions" [type]="chartType">
         </canvas>
       </div>
     </div>
