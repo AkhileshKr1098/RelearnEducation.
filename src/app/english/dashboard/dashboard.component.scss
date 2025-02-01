@@ -233,7 +233,7 @@
 
 .chart_section {
   width: 90%;
-  height: 60%;
+  height: 50%;
   float: left;
   margin-left: 5%;
 }
@@ -536,6 +536,7 @@
   font-family: Arial, sans-serif;
   // background: linear-gradient(to right, #ff7e5f, #feb47b);
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin: 0;
@@ -552,16 +553,33 @@
   background: linear-gradient(to right, #4facfe, #00f2fe);
   border-radius: 30px;
   padding: 15px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 15px rgb(255, 132, 0);
 }
 
-.mainline{
-  width: 100%;
-  height: 50px;
-  background-color: gray;
+
+.mainline {
+  width: 90%;
+  height: 35px;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  border-radius: 50px;
   position: relative;
-  top: -45px;
+  border: 4px solid rgb(255, 132, 0); /* First outer border */
 }
+
+.mainline::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  top: 3px;
+  left: 0;
+  z-index: -1;
+  border: 4px solid red; /* Second outer border */
+}
+
+
+
 .day-container {
   display: flex;
   flex-direction: column;
@@ -592,11 +610,11 @@
 }
 
 .line {
-  width: 2px;
-  height: 50px;
-  background: black;
+  width: 3px;
+  height: 100px;
+  background: rgb(255, 132, 0);
   position: absolute;
-  top: -70px;
+  top: -125px;
 }
 
 .number {
