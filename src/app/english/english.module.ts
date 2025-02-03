@@ -7,10 +7,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 
 import { MatMenuModule } from '@angular/material/menu';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 
@@ -58,8 +58,8 @@ import { UnitComponent } from './unit/unit.component';
       innerStrokeColor: "#C7E596",
       animationDuration: 300,
     })
-    
+
   ],
-  
+
 })
 export class EnglishModule { }

@@ -13,12 +13,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { StudenListComponent } from './studen-list/studen-list.component';
+import { StudenAddFormComponent } from './studen-add-form/studen-add-form.component';
 
 
 @NgModule({
   declarations: [
     AdminLoginComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    AdminDashboardComponent,
+    StudenListComponent,
+    StudenAddFormComponent
   ],
   imports: [
     CommonModule,
