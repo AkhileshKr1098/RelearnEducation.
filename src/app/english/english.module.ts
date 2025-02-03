@@ -25,12 +25,14 @@ import { WeekByPageComponent } from './week-by-page/week-by-page.component';
 import { NgChartsModule } from 'ng2-charts';
 
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { UnitComponent } from './unit/unit.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     DashboardComponent,
-    WeekByPageComponent
+    WeekByPageComponent,
+    UnitComponent
   ],
   imports: [
     CommonModule,
