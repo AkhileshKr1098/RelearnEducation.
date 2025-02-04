@@ -16,6 +16,7 @@ import {MatInputModule} from '@angular/material/input';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { StudenListComponent } from './studen-list/studen-list.component';
 import { StudenAddFormComponent } from './studen-add-form/studen-add-form.component';
+import { ConfirmBoxComponentComponent } from './confirm-box-component/confirm-box-component.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { StudenAddFormComponent } from './studen-add-form/studen-add-form.compon
     AdminHomeComponent,
     AdminDashboardComponent,
     StudenListComponent,
-    StudenAddFormComponent
+    StudenAddFormComponent,
+    ConfirmBoxComponentComponent
   ],
   imports: [
     CommonModule,
