@@ -23,13 +23,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let std of applicants; ">
+                <tr *ngFor="let std of stdeuntList; let i = index">
                     <th scope="row">1</th>
-                    <td>{{std.name}}</td>
-                    <td>{{std.grade}}</td>
-                    <td>{{std.phone}}</td>
-                    <td>{{std.email}}</td>
-                    <td>{{std.city}} </td>
+                    <td>{{std.Name1}}</td>
+                    <td>{{std.Course}}</td>
+                    <td>{{std.MobileNo}}</td>
+                    <td>{{std.EmailID}}</td>
+                    <td>{{std.City}} </td>
                     <td>
                         <button mat-icon-button (click)="add_new_std()">
                             <mat-icon>visibility</mat-icon>

@@ -17,6 +17,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { StudenListComponent } from './studen-list/studen-list.component';
 import { StudenAddFormComponent } from './studen-add-form/studen-add-form.component';
 import { ConfirmBoxComponentComponent } from './confirm-box-component/confirm-box-component.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { ConfirmBoxComponentComponent } from './confirm-box-component/confirm-bo
     MatDialogModule,
     MatInputModule,
     MatIconModule,
+    ReactiveFormsModule
  ]
 })
 export class AdminModule { }
