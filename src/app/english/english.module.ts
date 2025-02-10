@@ -26,14 +26,14 @@ import { NgChartsModule } from 'ng2-charts';
 
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { UnitComponent } from './unit/unit.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     HomeComponent,
     DashboardComponent,
     WeekByPageComponent,
-    UnitComponent
-  ],
+    UnitComponent],
   imports: [
     CommonModule,
     EnglishRoutingModule,
@@ -57,7 +57,8 @@ import { UnitComponent } from './unit/unit.component';
       outerStrokeColor: "#78C000",
       innerStrokeColor: "#C7E596",
       animationDuration: 300,
-    })
+    }),
+    ReactiveFormsModule,
 
   ],
 

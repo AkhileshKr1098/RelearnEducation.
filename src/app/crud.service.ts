@@ -8,7 +8,8 @@ import { UserProfile } from './interface/student.interface';
 })
 export class CRUDService {
 
-  base_url: string = 'http://localhost/relearn/'
+  // base_url: string = 'http://localhost/relearn/' 
+  base_url: string = 'https://educatorbox.com/Development/API/'
   constructor(
     private _http: HttpClient
   ) { }
@@ -20,4 +21,10 @@ export class CRUDService {
   get_student_data(): Observable<UserProfile> {
     return this._http.get<UserProfile>(`${this.base_url}student.php`)
   }
+
+  Student_registation(data: any): Observable<UserProfile> {
+    return this._http.post<UserProfile>(`${this.base_url}student_registation.php`, data)
+  }
+
+  
 }

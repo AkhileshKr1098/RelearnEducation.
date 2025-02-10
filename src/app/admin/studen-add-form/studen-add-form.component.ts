@@ -32,7 +32,8 @@ export class StudenAddFormComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log(this);
+    
   }
 
   submitForm() {
