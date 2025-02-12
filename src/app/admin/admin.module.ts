@@ -18,6 +18,16 @@ import { StudenListComponent } from './studen-list/studen-list.component';
 import { StudenAddFormComponent } from './studen-add-form/studen-add-form.component';
 import { ConfirmBoxComponentComponent } from './confirm-box-component/confirm-box-component.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { WeekComponent } from './Questions/week/week.component';
+import { AddWeekComponent } from './Questions/add-week/add-week.component';
+import { DayListComponent } from './Questions/day-list/day-list.component';
+import { AddDayComponent } from './Questions/add-day/add-day.component';
+import { GradeListComponent } from './Questions/grade-list/grade-list.component';
+import { AddGradeComponent } from './Questions/add-grade/add-grade.component';
+import { SectionListComponent } from './Questions/section-list/section-list.component';
+import { AddSectionComponent } from './Questions/add-section/add-section.component';
+import { TopicsListComponent } from './Questions/topics-list/topics-list.component';
+import { AddTopicsComponent } from './Questions/add-topics/add-topics.component';
 
 
 @NgModule({
@@ -27,7 +37,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     AdminDashboardComponent,
     StudenListComponent,
     StudenAddFormComponent,
-    ConfirmBoxComponentComponent
+    ConfirmBoxComponentComponent,
+    WeekComponent,
+    AddWeekComponent,
+    DayListComponent,
+    AddDayComponent,
+    GradeListComponent,
+    AddGradeComponent,
+    SectionListComponent,
+    AddSectionComponent,
+    TopicsListComponent,
+    AddTopicsComponent
   ],
   imports: [
     CommonModule,

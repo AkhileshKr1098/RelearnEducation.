@@ -5,6 +5,11 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { StudenAddFormComponent } from './studen-add-form/studen-add-form.component';
 import { StudenListComponent } from './studen-list/studen-list.component';
+import { WeekComponent } from './Questions/week/week.component';
+import { DayListComponent } from './Questions/day-list/day-list.component';
+import { GradeListComponent } from './Questions/grade-list/grade-list.component';
+import { SectionListComponent } from './Questions/section-list/section-list.component';
+import { TopicsListComponent } from './Questions/topics-list/topics-list.component';
 
 const routes: Routes = [
   { path: '', component: AdminLoginComponent },
@@ -13,6 +18,12 @@ const routes: Routes = [
       { path: '', component: AdminDashboardComponent },
       { path: 'studentlist', component: StudenListComponent },
       { path: 'studentadd', component: StudenAddFormComponent },
+      { path: 'week', component: WeekComponent },
+      { path: 'day', component: DayListComponent },
+      { path: 'grade', component: GradeListComponent },
+      { path: 'section', component: SectionListComponent },
+      { path: 'topics', component: TopicsListComponent },
+
     ]
   },
 

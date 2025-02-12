@@ -29,12 +29,12 @@
             <div class="collapse" id="register">
                 <button class="options" routerLink="studentlist" routerLinkActive="active">
                     <mat-icon>arrow_right_alt</mat-icon>
-                    Pending Student
-                </button>
-                <button class="options" routerLink="studentlist" routerLinkActive="active">
-                    <mat-icon>arrow_right_alt</mat-icon>
                     All Student
                 </button>
+                <!-- <button class="options" routerLink="studentlist" routerLinkActive="active">
+                    <mat-icon>arrow_right_alt</mat-icon>
+                    All Student
+                </button> -->
             </div>
 
 
@@ -49,15 +49,19 @@
                     [@rotateIcon]="isOpen3 ? 'open' : 'closed'">keyboard_arrow_left</mat-icon>
             </button>
             <div class="collapse" id="masterData" routerLinkActive="active">
-                <button class="options" routerLink="master_data_module">
+                <button class="options" routerLink="week" routerLinkActive="active">
                     <mat-icon>arrow_right_alt</mat-icon>
-                    Day Data
+                    Weeks
                 </button>
-                <button class="options" routerLink="master_data_class" routerLinkActive="active">
+                <button class="options" routerLink="day" routerLinkActive="active">
+                    <mat-icon>arrow_right_alt</mat-icon>
+                    Day`s
+                </button>
+                <button class="options" routerLink="grade" routerLinkActive="active">
                     <mat-icon>arrow_right_alt</mat-icon>
                     Grade
                 </button>
-                <button class="options" routerLink="master_Data_subj" routerLinkActive="active">
+                <button class="options" routerLink="section" routerLinkActive="active">
                     <mat-icon>arrow_right_alt</mat-icon>
                     Section
                 </button>
