@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserProfile } from './interface/student.interface';
-import { Week, WeekInsertRes, WeekRes } from './interface/Question.interface';
+import { DayRes, GradeRes, SectionRes, Week, WeekInsertRes, WeekRes } from './interface/Question.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -48,11 +48,73 @@ export class CRUDService {
     return this._http.get<WeekRes>(`${this.base_url}week.php`)
   }
 
-  getDays(): Observable<any> {
-    return this._http.get<any>(`${this.base_url}days.php`)
+  getDays(): Observable<DayRes> {
+    return this._http.get<DayRes>(`${this.base_url}days.php`)
   }
 
-  // for day 
+  InserDay(data: any): Observable<any> {
+    return this._http.post<any>(`${this.base_url}days.php`, data)
+  }
+  UpdateDay(data: any): Observable<any> {
+    return this._http.put<any>(`${this.base_url}days.php`, data)
+  }
+
+  Day_delete(idn: number): Observable<any> {
+    console.log(idn);
+
+    return this._http.delete<any>(`${this.base_url}days.php`, {
+      body: { id: idn },
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    })
+  }
+
+  // grade_tbl.php
+
+  getGrade(): Observable<GradeRes> {
+    return this._http.get<GradeRes>(`${this.base_url}grade_tbl.php
+`)
+  }
+
+  GradeInsert(data: any): Observable<any> {
+    return this._http.post<any>(`${this.base_url}grade_tbl.php`, data)
+  }
+  GradeUpdate(data: any): Observable<any> {
+    return this._http.put<any>(`${this.base_url}grade_tbl.php`, data)
+  }
+
+  GradeDelete(idn: number): Observable<any> {
+    console.log(idn);
+
+    return this._http.delete<any>(`${this.base_url}grade_tbl.php`, {
+      body: { id: idn },
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    })
+  }
+
+  // section.php
+
+  getSection(): Observable<SectionRes> {
+    return this._http.get<SectionRes>(`${this.base_url}section.php`)
+  }
+
+  SectionInsert(data: any): Observable<any> {
+    return this._http.post<any>(`${this.base_url}section.php`, data)
+  }
+  SectionUpdate(data: any): Observable<any> {
+    return this._http.put<any>(`${this.base_url}section.php`, data)
+  }
+
+  SectionDelete(idn: number): Observable<any> {
+    console.log(idn);
+
+    return this._http.delete<any>(`${this.base_url}section.php`, {
+      body: { id: idn },
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    })
+  }
+
+
+
 
 
 }

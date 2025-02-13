@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CRUDService } from 'src/app/crud.service';
 import { AddDayComponent } from '../add-day/add-day.component';
 import { ConfirmBoxComponentComponent } from '../../confirm-box-component/confirm-box-component.component';
+import { DayRes } from 'src/app/interface/Question.interface';
 
 @Component({
   selector: 'app-day-list',
@@ -10,8 +11,8 @@ import { ConfirmBoxComponentComponent } from '../../confirm-box-component/confir
   styleUrls: ['./day-list.component.scss']
 })
 export class DayListComponent {
-  Weeks: any[] = []
-  FilterWeeks: any[] = []
+  Days: any[] = []
+  FilterDays: any[] = []
   deletevalue: any = 1
   constructor(
     private dialog: MatDialog,
@@ -25,12 +26,11 @@ export class DayListComponent {
 
   getData() {
     this._crud.getDays().subscribe(
-      (res) => {
+      (res: DayRes) => {
         console.log(res);
         if (Array.isArray(res.data)) {
-          this.Weeks = res.data
-          this.FilterWeeks = res.data
-
+          this.Days = res.data
+          this.FilterDays = res.data
         }
       }, (err: Error) => {
         console.log(err);
@@ -40,9 +40,16 @@ export class DayListComponent {
   }
 
   addNew() {
-    this.dialog.open(AddDayComponent, {
+    const opn = this.dialog.open(AddDayComponent, {
       disableClose: true,
     });
+
+    opn.afterClosed().subscribe(
+      (res) => {
+        console.log(res);
+        this.getData()
+      }
+    )
   }
 
   onEdit(edit: any) {
@@ -61,7 +68,6 @@ export class DayListComponent {
   }
 
   delete_application(item: any) {
-
     const dialogRef = this.dialog.open(ConfirmBoxComponentComponent, {
       disableClose: true
     })
@@ -70,7 +76,7 @@ export class DayListComponent {
       console.log(item);
 
       if (this.deletevalue == result) {
-        this._crud.Week_delete(item.id).subscribe(
+        this._crud.Day_delete(item.id).subscribe(
           (res: any) => {
             console.log(res)
             if (res.success == 1) {
@@ -91,8 +97,8 @@ export class DayListComponent {
     const data = event.target.value.toLowerCase();
     console.log(data);
 
-    this.FilterWeeks = this.Weeks.filter((res: any) =>
-      res.week_num.toString().toLowerCase().includes(data)
+    this.FilterDays = this.Days.filter((res: any) =>
+      res.day.toString().toLowerCase().includes(data)
     );
   }
 

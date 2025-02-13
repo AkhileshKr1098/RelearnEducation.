@@ -1,1 +1,36 @@
-<p>add-grade works!</p>
+<div class="registration_form" [formGroup]="Grades">
+    <div class="form_head">
+        <h3>Add Grade</h3>
+        <p mat-dialog-close>
+            <mat-icon>cancel</mat-icon>
+        </p>
+    </div>
+
+    <div class="form_area">
+
+        <div class="form-floating mb-2">
+            <select class="form-select" id="gender" formControlName="week_id" (change)="onGetDay($event)">
+                <option *ngFor="let item of weeks" [value]="item.id"> {{item.week_num}}</option>
+            </select>
+            <label for="gender">Grade</label>
+        </div>
+
+        <div class="form-floating mb-2">
+            <select class="form-select" id="gender" formControlName="day_id">
+                <option *ngFor="let item of FilterDays" [value]="item.id"> {{item.day}}</option>
+            </select>
+            <label for="gender">Day`s</label>
+        </div>
+
+        <div class="form-floating mb-2">
+            <input type="number" class="form-control" id="day" placeholder="Enter Days" formControlName="grade">
+            <label for="day">Grade </label>
+        </div>
+    </div>
+
+    <div class="btn_area">
+        <button type="button" class="btn btn-danger" id="cancel" mat-dialog-close>Cancel</button>
+        <button type="button" class="btn btn-primary" id="submit"
+            (click)="edit_data? updateForm(): submitForm()">{{edit_data?'Update':'Submit'}}</button>
+    </div>
+</div>
