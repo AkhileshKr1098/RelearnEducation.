@@ -52,3 +52,15 @@ export interface SectionRes {
     success: number,
     data: Section
 }
+
+
+export interface DayInfo {
+    day: string;
+    day_id: string;
+    grade: string;
+    grade_id: string;
+    id: string;
+    sections: string;
+    week_id: string;
+    week_num: string;
+  }

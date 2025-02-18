@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GradeListComponent } from './grade-list.component';
+import { ClassesComponent } from './classes.component';
 
-describe('GradeListComponent', () => {
-  let component: GradeListComponent;
-  let fixture: ComponentFixture<GradeListComponent>;
+describe('ClassesComponent', () => {
+  let component: ClassesComponent;
+  let fixture: ComponentFixture<ClassesComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [GradeListComponent]
+      declarations: [ClassesComponent]
     });
-    fixture = TestBed.createComponent(GradeListComponent);
+    fixture = TestBed.createComponent(ClassesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,25 +2,23 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CRUDService } from 'src/app/crud.service';
-import { Week, WeekRes } from 'src/app/interface/Question.interface';
 
 @Component({
-  selector: 'app-add-day',
-  templateUrl: './add-day.component.html',
-  styleUrls: ['./add-day.component.scss']
+  selector: 'app-add-classes',
+  templateUrl: './add-classes.component.html',
+  styleUrls: ['./add-classes.component.scss']
 })
-export class AddDayComponent {
-  weeks: Week[] = []
-  Days!: FormGroup
+export class AddClassesComponent {
+  Classes!: FormGroup
   profileImage: any = '../../../assets/icon/profile.jpeg'
   constructor(
     private _fb: FormBuilder,
     private _crud: CRUDService,
-    private matref: MatDialogRef<AddDayComponent>,
+    private matref: MatDialogRef<AddClassesComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_data: any
   ) {
-    this.Days = new FormGroup({
-      day: new FormControl('', Validators.required),
+    this.Classes = new FormGroup({
+      class: new FormControl('', Validators.required),
       id: new FormControl('', Validators.required),
 
     });
@@ -29,25 +27,14 @@ export class AddDayComponent {
   ngOnInit() {
     console.log(this.edit_data);
     if (this.edit_data) {
-      this.Days.patchValue(this.edit_data)
+      this.Classes.patchValue(this.edit_data)
     }
-    this.get_week()
   }
 
-  get_week() {
-    this._crud.getWeek().subscribe(
-      (res: WeekRes) => {
-        console.log(res);
-        if (Array.isArray(res.data)) {
-          this.weeks = res.data
-        }
-      }
-    )
-  }
 
   submitForm() {
-    console.log(this.Days.value);
-    this._crud.InserDay(this.Days.value).subscribe(
+    console.log(this.Classes.value);
+    this._crud.classAdd(this.Classes.value).subscribe(
       (res) => {
         console.log(res);
         if (res.success == 1) {
@@ -62,8 +49,8 @@ export class AddDayComponent {
 
 
   updateForm() {
-    console.log(this.Days.value);
-    this._crud.UpdateDay(this.Days.value).subscribe(
+    console.log(this.Classes.value);
+    this._crud.classUpdate(this.Classes.value).subscribe(
       (res) => {
         console.log(res);
         if (res.success == 1) {

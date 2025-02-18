@@ -70,22 +70,22 @@ export class CRUDService {
 
   // grade_tbl.php
 
-  getGrade(): Observable<GradeRes> {
-    return this._http.get<GradeRes>(`${this.base_url}grade_tbl.php
+  getClass(): Observable<GradeRes> {
+    return this._http.get<GradeRes>(`${this.base_url}classes.php
 `)
   }
 
-  GradeInsert(data: any): Observable<any> {
-    return this._http.post<any>(`${this.base_url}grade_tbl.php`, data)
+  classAdd(data: any): Observable<any> {
+    return this._http.post<any>(`${this.base_url}classes.php`, data)
   }
-  GradeUpdate(data: any): Observable<any> {
-    return this._http.put<any>(`${this.base_url}grade_tbl.php`, data)
+  classUpdate(data: any): Observable<any> {
+    return this._http.put<any>(`${this.base_url}classes.php`, data)
   }
 
-  GradeDelete(idn: number): Observable<any> {
+  classDeleted(idn: number): Observable<any> {
     console.log(idn);
 
-    return this._http.delete<any>(`${this.base_url}grade_tbl.php`, {
+    return this._http.delete<any>(`${this.base_url}classes.php`, {
       body: { id: idn },
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     })

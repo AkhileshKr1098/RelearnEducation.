@@ -1,18 +1,17 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CRUDService } from 'src/app/crud.service';
-import { AddGradeComponent } from '../add-grade/add-grade.component';
 import { ConfirmBoxComponentComponent } from '../../confirm-box-component/confirm-box-component.component';
-import { Grade, GradeRes } from 'src/app/interface/Question.interface';
+import { AddClassesComponent } from '../add-classes/add-classes.component';
 
 @Component({
-  selector: 'app-grade-list',
-  templateUrl: './grade-list.component.html',
-  styleUrls: ['./grade-list.component.scss']
+  selector: 'app-classes',
+  templateUrl: './classes.component.html',
+  styleUrls: ['./classes.component.scss']
 })
-export class GradeListComponent {
-  Grade: Grade[] = []
-  FilterGrade: Grade[] = []
+export class ClassesComponent {
+  classes: any[] = []
+  FilterCleasses: any[] = []
   deletevalue: any = 1
   constructor(
     private dialog: MatDialog,
@@ -25,12 +24,12 @@ export class GradeListComponent {
 
 
   getData() {
-    this._crud.getGrade().subscribe(
-      (res: GradeRes) => {
+    this._crud.getClass().subscribe(
+      (res) => {
         console.log(res);
         if (Array.isArray(res.data)) {
-          this.Grade = res.data
-          this.FilterGrade = res.data
+          this.classes = res.data
+          this.FilterCleasses = res.data
         }
       }, (err: Error) => {
         console.log(err);
@@ -40,7 +39,7 @@ export class GradeListComponent {
   }
 
   addNew() {
-    const opn = this.dialog.open(AddGradeComponent, {
+    const opn = this.dialog.open(AddClassesComponent, {
       disableClose: true,
     });
 
@@ -53,7 +52,7 @@ export class GradeListComponent {
   }
 
   onEdit(edit: any) {
-    const dialogRef = this.dialog.open(AddGradeComponent, {
+    const dialogRef = this.dialog.open(AddClassesComponent, {
       disableClose: true,
       data: edit
     });
@@ -76,7 +75,7 @@ export class GradeListComponent {
       console.log(item);
 
       if (this.deletevalue == result) {
-        this._crud.Day_delete(item.id).subscribe(
+        this._crud.classDeleted(item.id).subscribe(
           (res: any) => {
             console.log(res)
             if (res.success == 1) {
@@ -97,7 +96,7 @@ export class GradeListComponent {
     const data = event.target.value.toLowerCase();
     console.log(data);
 
-    this.FilterGrade = this.Grade.filter((res: any) =>
+    this.FilterCleasses = this.classes.filter((res: any) =>
       res.day.toString().toLowerCase().includes(data)
     );
   }
