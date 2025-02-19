@@ -22,12 +22,12 @@ import { WeekComponent } from './Questions/week/week.component';
 import { AddWeekComponent } from './Questions/add-week/add-week.component';
 import { DayListComponent } from './Questions/day-list/day-list.component';
 import { AddDayComponent } from './Questions/add-day/add-day.component';
-import { SectionListComponent } from './Questions/section-list/section-list.component';
-import { AddSectionComponent } from './Questions/add-section/add-section.component';
 import { TopicsListComponent } from './Questions/topics-list/topics-list.component';
 import { AddTopicsComponent } from './Questions/add-topics/add-topics.component';
 import { ClassesComponent } from './Questions/classes/classes.component';
 import { AddClassesComponent } from './Questions/add-classes/add-classes.component';
+import { UnitListComponent } from './Questions/unit-list/unit-list.component';
+import { AddUnitComponent } from './Questions/add-unit/add-unit.component';
 
 
 @NgModule({
@@ -42,12 +42,12 @@ import { AddClassesComponent } from './Questions/add-classes/add-classes.compone
     AddWeekComponent,
     DayListComponent,
     AddDayComponent,
-    SectionListComponent,
-    AddSectionComponent,
     TopicsListComponent,
     AddTopicsComponent,
     ClassesComponent,
-    AddClassesComponent
+    AddClassesComponent,
+    UnitListComponent,
+    AddUnitComponent
   ],
   imports: [
     CommonModule,

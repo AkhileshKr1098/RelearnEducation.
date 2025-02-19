@@ -7,9 +7,9 @@ import { StudenAddFormComponent } from './studen-add-form/studen-add-form.compon
 import { StudenListComponent } from './studen-list/studen-list.component';
 import { WeekComponent } from './Questions/week/week.component';
 import { DayListComponent } from './Questions/day-list/day-list.component';
-import { SectionListComponent } from './Questions/section-list/section-list.component';
 import { TopicsListComponent } from './Questions/topics-list/topics-list.component';
 import { ClassesComponent } from './Questions/classes/classes.component';
+import { UnitListComponent } from './Questions/unit-list/unit-list.component';
 
 const routes: Routes = [
   { path: '', component: AdminLoginComponent },
@@ -21,7 +21,7 @@ const routes: Routes = [
       { path: 'week', component: WeekComponent },
       { path: 'day', component: DayListComponent },
       { path: 'classes', component: ClassesComponent },
-      { path: 'section', component: SectionListComponent },
+      { path: 'units', component: UnitListComponent },
       { path: 'topics', component: TopicsListComponent },
 
     ]

@@ -1,20 +1,19 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Day, Grade, Week } from 'src/app/interface/Question.interface';
+import { AddUnitComponent } from '../add-unit/add-unit.component';
 import { CRUDService } from 'src/app/crud.service';
-import { Grade, GradeRes, Section } from 'src/app/interface/Question.interface';
-import { AddSectionComponent } from '../add-section/add-section.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmBoxComponentComponent } from '../../confirm-box-component/confirm-box-component.component';
 
 @Component({
-  selector: 'app-section-list',
-  templateUrl: './section-list.component.html',
-  styleUrls: ['./section-list.component.scss']
+  selector: 'app-unit-list',
+  templateUrl: './unit-list.component.html',
+  styleUrls: ['./unit-list.component.scss']
 })
-export class SectionListComponent {
-  Sections: Section[] = []
-  FilterSection: Section[] = []
-  Grade: Grade[] = []
-  FilterGrade: Grade[] = []
+export class UnitListComponent {
+  units: any[] = []
+  FilterUnit: any[] = []
   deletevalue: any = 1
   constructor(
     private dialog: MatDialog,
@@ -27,12 +26,12 @@ export class SectionListComponent {
 
 
   getData() {
-    this._crud.getSection().subscribe(
-      (res: GradeRes) => {
+    this._crud.getUnit().subscribe(
+      (res) => {
         console.log(res);
         if (Array.isArray(res.data)) {
-          this.Sections = res.data
-          this.FilterSection= res.data
+          this.units = res.data
+          this.FilterUnit = res.data
         }
       }, (err: Error) => {
         console.log(err);
@@ -42,7 +41,7 @@ export class SectionListComponent {
   }
 
   addNew() {
-    const opn = this.dialog.open(AddSectionComponent, {
+    const opn = this.dialog.open(AddUnitComponent, {
       disableClose: true,
     });
 
@@ -55,7 +54,7 @@ export class SectionListComponent {
   }
 
   onEdit(edit: any) {
-    const dialogRef = this.dialog.open(AddSectionComponent, {
+    const dialogRef = this.dialog.open(AddUnitComponent, {
       disableClose: true,
       data: edit
     });
@@ -78,7 +77,7 @@ export class SectionListComponent {
       console.log(item);
 
       if (this.deletevalue == result) {
-        this._crud.Day_delete(item.id).subscribe(
+        this._crud.classDeleted(item.id).subscribe(
           (res: any) => {
             console.log(res)
             if (res.success == 1) {
@@ -99,7 +98,7 @@ export class SectionListComponent {
     const data = event.target.value.toLowerCase();
     console.log(data);
 
-    this.FilterGrade = this.Grade.filter((res: any) =>
+    this.FilterUnit = this.units.filter((res: any) =>
       res.day.toString().toLowerCase().includes(data)
     );
   }

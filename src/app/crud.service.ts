@@ -68,8 +68,6 @@ export class CRUDService {
     })
   }
 
-  // grade_tbl.php
-
   getClass(): Observable<GradeRes> {
     return this._http.get<GradeRes>(`${this.base_url}classes.php
 `)
@@ -93,21 +91,21 @@ export class CRUDService {
 
   // section.php
 
-  getSection(): Observable<SectionRes> {
-    return this._http.get<SectionRes>(`${this.base_url}section.php`)
+  getUnit(): Observable<any> {
+    return this._http.get<any>(`${this.base_url}unit_tbl.php`)
   }
 
-  SectionInsert(data: any): Observable<any> {
-    return this._http.post<any>(`${this.base_url}section.php`, data)
+  addUnit(data: any): Observable<any> {
+    return this._http.post<any>(`${this.base_url}unit_tbl.php`, data)
   }
-  SectionUpdate(data: any): Observable<any> {
-    return this._http.put<any>(`${this.base_url}section.php`, data)
+  unitUpdate(data: any): Observable<any> {
+    return this._http.put<any>(`${this.base_url}unit_tbl.php`, data)
   }
 
-  SectionDelete(idn: number): Observable<any> {
+  unitDeleted(idn: number): Observable<any> {
     console.log(idn);
 
-    return this._http.delete<any>(`${this.base_url}section.php`, {
+    return this._http.delete<any>(`${this.base_url}unit_tbl.php`, {
       body: { id: idn },
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     })
