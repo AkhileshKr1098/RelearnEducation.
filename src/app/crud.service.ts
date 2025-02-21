@@ -68,8 +68,8 @@ export class CRUDService {
     })
   }
 
-  getClass(): Observable<GradeRes> {
-    return this._http.get<GradeRes>(`${this.base_url}classes.php
+  getClass(): Observable<any> {
+    return this._http.get<any>(`${this.base_url}classes.php
 `)
   }
 
@@ -89,11 +89,16 @@ export class CRUDService {
     })
   }
 
-  // section.php
 
   getUnit(): Observable<any> {
     return this._http.get<any>(`${this.base_url}unit_tbl.php`)
   }
+
+
+  getUnitByClass(class_id: string): Observable<any> {
+    return this._http.get<any>(`${this.base_url}unit_tbl.php?class_id=${class_id}`);
+  }
+
 
   addUnit(data: any): Observable<any> {
     return this._http.post<any>(`${this.base_url}unit_tbl.php`, data)
@@ -112,7 +117,24 @@ export class CRUDService {
   }
 
 
+  getTopics(): Observable<any> {
+    return this._http.get<any>(`${this.base_url}topics.php`)
+  }
 
+  addTopics(data: any): Observable<any> {
+    return this._http.post<any>(`${this.base_url}topics.php`, data)
+  }
+  TopicsUpdate(data: any): Observable<any> {
+    return this._http.put<any>(`${this.base_url}topics.php`, data)
+  }
 
+  TopicsDelted(idn: number): Observable<any> {
+    console.log(idn);
+
+    return this._http.delete<any>(`${this.base_url}topics.php`, {
+      body: { id: idn },
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    })
+  }
 
 }

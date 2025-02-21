@@ -22,7 +22,6 @@ export class AddUnitComponent {
       unit: new FormControl('', Validators.required),
       class_id_fk: new FormControl('', Validators.required),
       id: new FormControl('', Validators.required),
-
     });
   }
 
