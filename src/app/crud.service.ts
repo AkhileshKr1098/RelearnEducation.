@@ -121,6 +121,10 @@ export class CRUDService {
     return this._http.get<any>(`${this.base_url}topics.php`)
   }
 
+  getTopicsByunit(unit: string): Observable<any> {
+    return this._http.get<any>(`${this.base_url}topics.php?class_id=${unit}`);
+  }
+
   addTopics(data: any): Observable<any> {
     return this._http.post<any>(`${this.base_url}topics.php`, data)
   }

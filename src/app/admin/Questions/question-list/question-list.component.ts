@@ -25,11 +25,10 @@ export class QuestionListComponent {
   getData() {
     this._crud.getQuestion().subscribe(
       (res) => {
-        console.log(res);
-        if (Array.isArray(res.data)) {
-          this.Question = res.data
-          this.FilterQuestion = res.data
-        }
+        this.Question = res
+        this.FilterQuestion = res
+        console.log(this.FilterQuestion)
+
       }, (err: Error) => {
         console.log(err);
 
