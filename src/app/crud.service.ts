@@ -137,4 +137,49 @@ export class CRUDService {
     })
   }
 
+  // for sub topics 
+
+  getSubTopics(): Observable<any> {
+    return this._http.get<any>(`${this.base_url}sub_topics.php`)
+  }
+
+  addSubTopics(data: any): Observable<any> {
+    return this._http.post<any>(`${this.base_url}sub_topics.php`, data)
+  }
+  SubTopicsUpdate(data: any): Observable<any> {
+    return this._http.put<any>(`${this.base_url}sub_topics.php`, data)
+  }
+
+  SubTopicsDelted(idn: number): Observable<any> {
+    console.log(idn);
+
+    return this._http.delete<any>(`${this.base_url}sub_topics.php`, {
+      body: { id: idn },
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    })
+  }
+
+  // for Question topics 
+
+  getQuestion(): Observable<any> {
+    return this._http.get<any>(`${this.base_url}question_mcq.php`)
+  }
+
+  addQuestion(data: any): Observable<any> {
+    return this._http.post<any>(`${this.base_url}question_mcq.php`, data)
+  }
+
+  QuestionUpdate(data: any): Observable<any> {
+    return this._http.put<any>(`${this.base_url}question_mcq.php`, data)
+  }
+
+  SubQuestion(idn: number): Observable<any> {
+    console.log(idn);
+
+    return this._http.delete<any>(`${this.base_url}question_mcq.php`, {
+      body: { id: idn },
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    })
+  }
+
 }

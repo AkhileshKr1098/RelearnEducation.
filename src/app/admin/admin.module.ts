@@ -28,6 +28,10 @@ import { ClassesComponent } from './Questions/classes/classes.component';
 import { AddClassesComponent } from './Questions/add-classes/add-classes.component';
 import { UnitListComponent } from './Questions/unit-list/unit-list.component';
 import { AddUnitComponent } from './Questions/add-unit/add-unit.component';
+import { SubTopicsListComponent } from './Questions/sub-topics-list/sub-topics-list.component';
+import { AddSubTopicsComponent } from './Questions/add-sub-topics/add-sub-topics.component';
+import { QuestionListComponent } from './Questions/question-list/question-list.component';
+import { AddQuestionComponent } from './Questions/add-question/add-question.component';
 
 
 @NgModule({
@@ -47,7 +51,11 @@ import { AddUnitComponent } from './Questions/add-unit/add-unit.component';
     ClassesComponent,
     AddClassesComponent,
     UnitListComponent,
-    AddUnitComponent
+    AddUnitComponent,
+    SubTopicsListComponent,
+    AddSubTopicsComponent,
+    QuestionListComponent,
+    AddQuestionComponent
   ],
   imports: [
     CommonModule,

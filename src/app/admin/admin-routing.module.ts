@@ -10,6 +10,8 @@ import { DayListComponent } from './Questions/day-list/day-list.component';
 import { TopicsListComponent } from './Questions/topics-list/topics-list.component';
 import { ClassesComponent } from './Questions/classes/classes.component';
 import { UnitListComponent } from './Questions/unit-list/unit-list.component';
+import { SubTopicsListComponent } from './Questions/sub-topics-list/sub-topics-list.component';
+import { QuestionListComponent } from './Questions/question-list/question-list.component';
 
 const routes: Routes = [
   { path: '', component: AdminLoginComponent },
@@ -23,6 +25,8 @@ const routes: Routes = [
       { path: 'classes', component: ClassesComponent },
       { path: 'units', component: UnitListComponent },
       { path: 'topics', component: TopicsListComponent },
+      { path: 'subtopics', component: SubTopicsListComponent },
+      { path: 'question', component: QuestionListComponent },
 
     ]
   },
