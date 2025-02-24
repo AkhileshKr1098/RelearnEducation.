@@ -20,7 +20,6 @@ export class AddQuestionComponent {
     private matref: MatDialogRef<AddQuestionComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_data: any
   ) {
-
     this.TopicsForm = this._fb.group({
       class_id_fk: ['', Validators.required],
       unit_id_fk: ['', Validators.required],
@@ -31,7 +30,8 @@ export class AddQuestionComponent {
       OptionB: ['', Validators.required],
       OptionC: ['', Validators.required],
       OptionD: ['', Validators.required],
-      answer: ['', Validators.required]
+      Answer: ['', Validators.required],
+      id: ['', Validators.required]
     });
   }
 
@@ -132,7 +132,21 @@ export class AddQuestionComponent {
 
   updateForm() {
     console.log(this.TopicsForm.value);
-    this._crud.TopicsUpdate(this.TopicsForm.value).subscribe(
+    const data = {
+      "Answer": "huv",
+      "OptionA": "Tall",
+      "OptionB": "Small",
+      "OptionC": "Long",
+      "OptionD": "Heavy",
+      "Question": "What is the opposite of \"big\"?",
+      "class_id_fk": 2,
+      "id": 4,
+      "question_type": "MCQ",
+      "topics_id_fk": 3,
+      "unit_id_fk": 3
+    }
+
+    this._crud.TopicsUpdate(data).subscribe(
       (res) => {
         console.log(res);
         if (res.success == 1) {
