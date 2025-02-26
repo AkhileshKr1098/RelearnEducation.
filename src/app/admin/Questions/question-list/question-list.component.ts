@@ -73,7 +73,7 @@ export class QuestionListComponent {
       console.log(item);
 
       if (this.deletevalue == result) {
-        this._crud.TopicsDelted(item.id).subscribe(
+        this._crud.QuestionDeleted(item.id).subscribe(
           (res: any) => {
             console.log(res)
             if (res.success == 1) {

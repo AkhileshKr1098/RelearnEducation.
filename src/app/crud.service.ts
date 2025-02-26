@@ -163,6 +163,7 @@ export class CRUDService {
     })
   }
 
+
   // for Question topics 
 
   getQuestion(): Observable<any> {
@@ -177,7 +178,7 @@ export class CRUDService {
     return this._http.put<any>(`${this.base_url}question_mcq.php`, data)
   }
 
-  SubQuestion(idn: number): Observable<any> {
+  QuestionDeleted(idn: number): Observable<any> {
     console.log(idn);
 
     return this._http.delete<any>(`${this.base_url}question_mcq.php`, {

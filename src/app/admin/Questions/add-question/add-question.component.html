@@ -1,87 +1,139 @@
-<div class="registration_form" [formGroup]="TopicsForm">
-    <div class="form_head">
-        <h3>Add Question</h3>
-        <p mat-dialog-close>
-            <mat-icon>cancel</mat-icon>
-        </p>
-    </div>
-
-    <div class="form_area">
-        <div class="row">
-            <div class="form-floating">
-                <select class="form-select" formControlName="class_id_fk" (change)="onGetUnit($event)">
-                    <option value="" disabled selected>Select Class</option>
-                    <option *ngFor="let cls of classe" [value]="cls.id">{{cls.class}}</option>
-                </select>
-                <label>Class</label>
-            </div>
-
-            <div class="form-floating">
-                <select class="form-select" formControlName="unit_id_fk" (change)="onGetTopics($event)">
-                    <option value="" disabled selected>Select Unit</option>
-                    <option *ngFor="let unit of units" [value]="unit.id">{{unit.unit}}</option>
-                </select>
-                <label>Unit</label>
-            </div>
-
-            <div class="form-floating">
-                <select class="form-select" formControlName="topics_id_fk">
-                    <option value="" disabled selected>Select Topic</option>
-                    <option *ngFor="let topic of Topics" [value]="topic.id">{{topic.topics}}</option>
-                </select>
-                <label>Topics</label>
-            </div>
-
-            <div class="form-floating">
-                <select class="form-select" formControlName="question_type">
-                    <option value="" disabled selected>Select Question Type</option>
-                    <option value="MCQ">MCQ</option>
-                    <option value="Letter Tracking">Letter Tracking</option>
-                    <option value="Incomplete">Incomplete</option>
-                </select>
-                <label>Question Type</label>
-            </div>
+<div id="wrapper">
+    <div class="registration_form" [formGroup]="QuestionForm">
+        <div class="form_head">
+            <h3>Add Question</h3>
+            <p mat-dialog-close>
+                <mat-icon>cancel</mat-icon>
+            </p>
         </div>
 
-        <div class="row">
-            <div class="form-floating full-width">
-                <input type="text" class="form-control" placeholder="Enter Question" formControlName="Question">
-                <label>Question</label>
+        <div class="form_area">
+            <div class="row">
+                <div class="form-floating">
+                    <select class="form-select" formControlName="question_type" (change)="onQuestionTypeChange($event)">
+                        <option value="MCQ">MCQ</option>
+                        <option value="LetterTracing">Letter Tracing</option>
+                        <option value="LetterMatch">Letter Match</option>
+                        <option value="BlendWords">Blend words</option>
+                    </select>
+                    <label>Question Type</label>
+                </div>
+
+                <div class="form-floating">
+                    <select class="form-select" formControlName="class_id_fk" (change)="onGetUnit($event)">
+                        <option value="" disabled selected>Select Class</option>
+                        <option *ngFor="let cls of classe" [value]="cls.id">{{cls.class}}</option>
+                    </select>
+                    <label>Class</label>
+                </div>
+
+                <div class="form-floating">
+                    <select class="form-select" formControlName="unit_id_fk" (change)="onGetTopics($event)">
+                        <option value="" disabled selected>Select Unit</option>
+                        <option *ngFor="let unit of units" [value]="unit.id">{{unit.unit}}</option>
+                    </select>
+                    <label>Unit</label>
+                </div>
+
+                <div class="form-floating">
+                    <select class="form-select" formControlName="topics_id_fk">
+                        <option value="" disabled selected>Select Topic</option>
+                        <option *ngFor="let topic of Topics" [value]="topic.id">{{topic.topics}}</option>
+                    </select>
+                    <label>Topics</label>
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="form-floating full-width">
+                    <input type="text" class="form-control" placeholder="Enter Question" formControlName="Question">
+                    <label>Question</label>
+                </div>
+            </div>
+
+            <!-- for MCQ Question Type  start -->
+            <div *ngIf="questionType == 'MCQ'">
+                <div class="mcq">
+                    <div class="row">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" placeholder="Option A" formControlName="OptionA">
+                            <label>Option A</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" placeholder="Option B" formControlName="OptionB">
+                            <label>Option B</label>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="Option C"
+                                    formControlName="OptionC">
+                                <label>Option C</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="Option D"
+                                    formControlName="OptionD">
+                                <label>Option D</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-floating full-width">
+                                <input type="text" class="form-control" placeholder="Answer" formControlName="Answer">
+                                <label>Answer</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- for MCQ Question Type  END -->
+
+            <!-- for Letter Match Question Type  start -->
+
+            <div *ngIf="questionType === 'LetterMatch'">
+
+                <div class="LetterMatch">
+                    <div formArrayName="LetterMatch">
+                        <div class="row" *ngFor="let option of options.controls; let i = index" [formGroupName]="i">
+
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="Option A"
+                                    formControlName="OptionA">
+                                <label>Option Left Side ({{i+1}})</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="Option B"
+                                    formControlName="OptionB">
+                                <label>Option Right Side ({{i+1}})</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="Option C" formControlName="Answer">
+                                <label>Correct Answer ({{i+1}})</label>
+                            </div>
+
+                            <!-- Show the add button only on the last row & if rows are less than 5 -->
+                            <button *ngIf="i === options.length - 1 && options.length < 5" mat-icon-button
+                                (click)="addRow()">
+                                <mat-icon>add_circle_outline</mat-icon>
+                            </button>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+                <div class="btn_area">
+                    <button type="button" class="btn btn-danger" mat-dialog-close>Cancel</button>
+                    <button type="button" class="btn btn-primary"
+                        (click)="edit_data ? updateForm() : submitForm()">{{edit_data
+                        ? 'Update' : 'Submit'}}</button>
+                </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="form-floating">
-                <input type="text" class="form-control" placeholder="Option A" formControlName="OptionA">
-                <label>Option A</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" class="form-control" placeholder="Option B" formControlName="OptionB">
-                <label>Option B</label>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-floating">
-                <input type="text" class="form-control" placeholder="Option C" formControlName="OptionC">
-                <label>Option C</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" class="form-control" placeholder="Option D" formControlName="OptionD">
-                <label>Option D</label>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-floating full-width">
-                <input type="text" class="form-control" placeholder="Answer" formControlName="Answer">
-                <label>Answer</label>
-            </div>
-        </div>
-    </div>
-
-    <div class="btn_area">
-        <button type="button" class="btn btn-danger" mat-dialog-close>Cancel</button>
-        <button type="button" class="btn btn-primary" (click)="edit_data ? updateForm() : submitForm()">{{edit_data ? 'Update' : 'Submit'}}</button>
-    </div>
-</div>

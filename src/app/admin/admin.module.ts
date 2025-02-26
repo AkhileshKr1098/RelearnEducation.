@@ -17,7 +17,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { StudenListComponent } from './studen-list/studen-list.component';
 import { StudenAddFormComponent } from './studen-add-form/studen-add-form.component';
 import { ConfirmBoxComponentComponent } from './confirm-box-component/confirm-box-component.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WeekComponent } from './Questions/week/week.component';
 import { AddWeekComponent } from './Questions/add-week/add-week.component';
 import { DayListComponent } from './Questions/day-list/day-list.component';
@@ -68,7 +68,8 @@ import { AddQuestionComponent } from './Questions/add-question/add-question.comp
     MatDialogModule,
     MatInputModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
  ]
 })
 export class AdminModule { }
