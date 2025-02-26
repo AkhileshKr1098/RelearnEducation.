@@ -42,10 +42,35 @@ export class AddQuestionComponent {
 
   ngOnInit() {
     if (this.edit_data) {
+      console.log(this.edit_data)
       this.GetUnit(this.edit_data.class_id_fk);
       this.getTopics(this.edit_data.unit_id_fk);
       this.QuestionForm.patchValue(this.edit_data);
       this.questionType = this.edit_data.question_type;
+
+      if (this.edit_data.question_type === "LetterMatch") {
+        console.log(this.edit_data);
+
+        // Clear existing form array data
+        this.options.clear();
+
+        // Split data into arrays
+        const optionAValues = this.edit_data.OptionA.split(', '); // "A, C, D, B"
+        const optionBValues = this.edit_data.OptionB.split(', '); // "Dog, Ball, Apple, Cat"
+        const answerValues = this.edit_data.Answer.split(', ');   // "Apple, Cat, Dog, Ball"
+
+        // Loop through data and push into form array
+        optionAValues.forEach((optionA: any, index: any) => {
+          this.options.push(
+            this._fb.group({
+              OptionA: [optionA],
+              OptionB: [optionBValues[index] || ''],
+              Answer: [answerValues[index] || '']
+            })
+          );
+        });
+      }
+
     }
     this.onGetClass();
   }
@@ -104,11 +129,10 @@ export class AddQuestionComponent {
     }
 
     if (this.questionType == 'LetterMatch') {
-      console.log(this.QuestionForm.value)
       const formData = {
-        OptionA: this.options.value.map((row: any) => row.OptionA),
-        OptionB: this.options.value.map((row: any) => row.OptionB),
-        Answer: this.options.value.map((row: any) => row.OptionC),
+        OptionA: this.options.value.map((row: any) => row.OptionA).join(', '),
+        OptionB: this.options.value.map((row: any) => row.OptionB).join(', '),
+        Answer: this.options.value.map((row: any) => row.Answer).join(', '),
         Question: this.QuestionForm.get('Question')?.value,
         class_id_fk: this.QuestionForm.get('class_id_fk')?.value,
         unit_id_fk: this.QuestionForm.get('class_id_fk')?.value,
@@ -116,8 +140,20 @@ export class AddQuestionComponent {
         question_type: this.QuestionForm.get('question_type')?.value,
       };
 
+      console.log(formData)
 
       this._crud.addQuestion(formData).subscribe(
+        (res) => {
+          console.log(res)
+        }
+      );
+    }
+  }
+
+  updateForm() {
+    if (this.questionType == 'MCQ') {
+      const data = { ...this.QuestionForm.value };
+      this._crud.QuestionUpdate(data).subscribe(
         (res) => {
           alert(res.message);
           if (res.success == 1) {
@@ -126,18 +162,32 @@ export class AddQuestionComponent {
         }
       );
     }
-  }
 
-  updateForm() {
-    const data = { ...this.QuestionForm.value };
-    this._crud.QuestionUpdate(data).subscribe(
-      (res) => {
-        alert(res.message);
-        if (res.success == 1) {
-          this.matref.close(1);
+
+    if (this.questionType == 'LetterMatch') {
+      const formData = {
+        OptionA: this.options.value.map((row: any) => row.OptionA).join(', '),
+        OptionB: this.options.value.map((row: any) => row.OptionB).join(', '),
+        Answer: this.options.value.map((row: any) => row.Answer).join(', '),
+        Question: this.QuestionForm.get('Question')?.value,
+        class_id_fk: this.QuestionForm.get('class_id_fk')?.value,
+        unit_id_fk: this.QuestionForm.get('class_id_fk')?.value,
+        topics_id_fk: this.QuestionForm.get('topics_id_fk')?.value,
+        question_type: this.QuestionForm.get('question_type')?.value,
+        OptionC: ". ",
+        OptionD: ".",
+        id: this.QuestionForm.get('id')?.value,
+      };
+
+      console.log(formData)
+
+      this._crud.QuestionUpdate(formData).subscribe(
+        (res) => {
+          console.log(res)
         }
-      }
-    );
+      );
+    }
+
   }
 
   get options() {
