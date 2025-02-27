@@ -187,4 +187,18 @@ export class CRUDService {
     })
   }
 
+ 
+
+  addQuestion_picktheblend(data: any): Observable<any> {
+    return this._http.post<any>(`${this.base_url}question_picktheblend.php`, data)
+  }
+
+  QuestionUpdat_picktheblend(data: any): Observable<any> {
+    return this._http.put<any>(`${this.base_url}question_picktheblend.php`, data)
+  }
+
+
+
+  
+
 }

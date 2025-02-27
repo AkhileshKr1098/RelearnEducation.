@@ -9,11 +9,12 @@ import { CRUDService } from 'src/app/crud.service';
   styleUrls: ['./add-question.component.scss']
 })
 export class AddQuestionComponent {
+  questionIMG: any = '../../../../assets/icon/questionimg.jpg'
+  questionFile: any
   classe: any[] = [];
   units: any[] = [];
   Topics: any[] = [];
   QuestionForm!: FormGroup;
-  profileImage: any = '../../../assets/icon/profile.jpeg';
   questionType: string = '';
 
   constructor(
@@ -148,6 +149,31 @@ export class AddQuestionComponent {
         }
       );
     }
+
+
+    if (this.questionType == 'BlendWords') {
+
+      const fromdata = new FormData()
+      fromdata.append('class_id_fk', this.QuestionForm.get('class_id_fk')?.value)
+      fromdata.append('unit_id_fk', this.QuestionForm.get('unit_id_fk')?.value)
+      fromdata.append('topics_id_fk', this.QuestionForm.get('topics_id_fk')?.value)
+      fromdata.append('question_type', this.QuestionForm.get('question_type')?.value)
+      fromdata.append('Question', this.QuestionForm.get('Question')?.value)
+      fromdata.append('OptionA', this.QuestionForm.get('OptionA')?.value)
+      fromdata.append('OptionB', this.QuestionForm.get('OptionB')?.value)
+      fromdata.append('OptionC', this.QuestionForm.get('OptionC')?.value)
+      fromdata.append('OptionD', this.QuestionForm.get('OptionD')?.value)
+      fromdata.append('Answer', this.QuestionForm.get('Answer')?.value)
+      fromdata.append('question_Img', this.questionFile)
+
+      this._crud.addQuestion_picktheblend(fromdata).subscribe(
+        (res: any) => {
+          console.log(res)
+        }
+      )
+    }
+
+
   }
 
   updateForm() {
@@ -163,7 +189,6 @@ export class AddQuestionComponent {
       );
     }
 
-
     if (this.questionType == 'LetterMatch') {
       const formData = {
         OptionA: this.options.value.map((row: any) => row.OptionA).join(', '),
@@ -174,7 +199,7 @@ export class AddQuestionComponent {
         unit_id_fk: this.QuestionForm.get('class_id_fk')?.value,
         topics_id_fk: this.QuestionForm.get('topics_id_fk')?.value,
         question_type: this.QuestionForm.get('question_type')?.value,
-        OptionC: ". ",
+        OptionC: ".",
         OptionD: ".",
         id: this.QuestionForm.get('id')?.value,
       };
@@ -205,6 +230,17 @@ export class AddQuestionComponent {
   addRow() {
     if (this.options.length < 5) {
       this.options.push(this.createOptionRow());
+    }
+  }
+
+  onFileChange(event: any) {
+    this.questionFile = event.target.files[0];
+    if (this.questionFile) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.questionIMG = reader.result;
+      };
+      reader.readAsDataURL(this.questionFile);
     }
   }
 }
