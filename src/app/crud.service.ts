@@ -8,7 +8,6 @@ import { DayRes, GradeRes, SectionRes, Week, WeekInsertRes, WeekRes } from './in
   providedIn: 'root'
 })
 export class CRUDService {
-
   // base_url: string = 'http://localhost/relearn/' 
   base_url: string = 'https://educatorbox.com/Development/API/'
   constructor(
@@ -187,18 +186,21 @@ export class CRUDService {
     })
   }
 
- 
+
 
   addQuestion_picktheblend(data: any): Observable<any> {
     return this._http.post<any>(`${this.base_url}question_picktheblend.php`, data)
   }
 
   QuestionUpdat_picktheblend(data: any): Observable<any> {
-    return this._http.put<any>(`${this.base_url}question_picktheblend.php`, data)
+    return this._http.post<any>(`${this.base_url}question_picktheblend.php`, data)
+  }
+  Question_listen(data: any): Observable<any> {
+    return this._http.post<any>(`${this.base_url}question_listen.php`, data)
   }
 
 
 
-  
+
 
 }

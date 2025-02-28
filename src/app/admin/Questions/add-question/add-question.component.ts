@@ -35,6 +35,7 @@ export class AddQuestionComponent {
       OptionC: ['', Validators.required],
       OptionD: ['', Validators.required],
       Answer: ['', Validators.required],
+      incomplete_word: ['', Validators.required],
       id: ['', Validators.required],
       LetterMatch: this._fb.array([this.createOptionRow()])
 
@@ -43,11 +44,16 @@ export class AddQuestionComponent {
 
   ngOnInit() {
     if (this.edit_data) {
-      console.log(this.edit_data)
+
       this.GetUnit(this.edit_data.class_id_fk);
       this.getTopics(this.edit_data.unit_id_fk);
-      this.QuestionForm.patchValue(this.edit_data);
       this.questionType = this.edit_data.question_type;
+
+      if (this.edit_data.question_type === 'MCQ') {
+        console.log(this.edit_data)
+        this.QuestionForm.patchValue(this.edit_data);
+
+      }
 
       if (this.edit_data.question_type === "LetterMatch") {
         console.log(this.edit_data);
@@ -70,6 +76,12 @@ export class AddQuestionComponent {
             })
           );
         });
+      }
+
+      if (this.edit_data.question_type === "BlendWords") {
+        console.log(this.edit_data);
+        this.QuestionForm.patchValue(this.edit_data)
+        this.questionIMG = this._crud.base_url + this.edit_data.question_Img
       }
 
     }
@@ -164,6 +176,7 @@ export class AddQuestionComponent {
       fromdata.append('OptionC', this.QuestionForm.get('OptionC')?.value)
       fromdata.append('OptionD', this.QuestionForm.get('OptionD')?.value)
       fromdata.append('Answer', this.QuestionForm.get('Answer')?.value)
+      fromdata.append('incomplete_word', this.QuestionForm.get('incomplete_word')?.value)
       fromdata.append('question_Img', this.questionFile)
 
       this._crud.addQuestion_picktheblend(fromdata).subscribe(
@@ -211,6 +224,32 @@ export class AddQuestionComponent {
           console.log(res)
         }
       );
+    }
+
+    if (this.questionType == 'BlendWords') {
+      const fromdata = new FormData()
+      fromdata.append('class_id_fk', this.QuestionForm.get('class_id_fk')?.value)
+      fromdata.append('unit_id_fk', this.QuestionForm.get('unit_id_fk')?.value)
+      fromdata.append('topics_id_fk', this.QuestionForm.get('topics_id_fk')?.value)
+      fromdata.append('question_type', this.QuestionForm.get('question_type')?.value)
+      fromdata.append('Question', this.QuestionForm.get('Question')?.value)
+      fromdata.append('OptionA', this.QuestionForm.get('OptionA')?.value)
+      fromdata.append('OptionB', this.QuestionForm.get('OptionB')?.value)
+      fromdata.append('OptionC', this.QuestionForm.get('OptionC')?.value)
+      fromdata.append('OptionD', this.QuestionForm.get('OptionD')?.value)
+      fromdata.append('Answer', this.QuestionForm.get('Answer')?.value)
+      fromdata.append('id', this.QuestionForm.get('id')?.value)
+      fromdata.append('incomplete_word', this.QuestionForm.get('incomplete_word')?.value)
+      if (this.questionFile) {
+        fromdata.append('question_Img', this.questionFile)
+      }
+
+      this._crud.QuestionUpdat_picktheblend(fromdata).subscribe(
+        (res: any) => {
+          console.log(res);
+
+        }
+      )
     }
 
   }
